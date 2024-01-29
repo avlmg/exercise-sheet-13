@@ -1,7 +1,7 @@
 package de.unistuttgart.iste.sqa.pse.sheet13.homework.settler;
 
 /**
- * Type of a Resource
+ * Type of a Resource 
  */
 public class ResourceType {
 	private final String label;
