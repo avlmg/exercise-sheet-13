@@ -28,18 +28,21 @@ public final class HamsterClub implements Club {
 	@Override
 	public List<String> getNameOfMembers() {
 		// TODO: implement
-		return null;
+		return members.stream().map(ClubMember::getName).sorted().toList();
+	//	return null;
 	}
 
 	@Override
 	public double getTotalContributions() {
 		// TODO: implement
-		return 0.0;
+		return members.stream().map(ClubMember::getContributions).mapToDouble(contribution -> Double.valueOf(contribution)).sum();
+		// return 0.0;
 	}
 
 	@Override
 	public void applyDiscount() {
 		// TODO: implement
+		
 	}
 
 	@Override
