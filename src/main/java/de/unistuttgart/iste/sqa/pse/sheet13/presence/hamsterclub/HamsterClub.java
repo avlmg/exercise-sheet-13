@@ -43,28 +43,30 @@ public final class HamsterClub implements Club {
 
 	@Override
 	public void applyDiscount() {
-		// TODO: implement
-		
+		members.stream()
+				.filter(member -> member.getAge() > 60)
+				.forEach(member -> member.setContributions(member.getContributions()*0.9));
 	}
 
 	@Override
 	public List<ClubMember> getMembersWithUnpaidFees() {
-		// TODO: implement
-		return null;
+		return members.stream()
+				.filter(member -> !member.getHasPaidContributions())
+				.toList();
 	}
 
 	/**
 	 * implement your Comparator here
 	 */
 	private Comparator<ClubMember> generateComparator() {
-		// TODO: implement
-		return null;
+		return Comparator.comparing(ClubMember::getName);
 	}
 
 	@Override
 	public ClubMember getOldestMember() {
-		// TODO: implement
-		return null;
+		return members.stream()
+				.max(Comparator.comparing(ClubMember::getAge))
+				.orElse(null);
 	}
 
 	@Override
