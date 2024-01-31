@@ -1,6 +1,7 @@
 package de.unistuttgart.iste.sqa.pse.sheet13.presence.hamsterclub;
 
 import java.util.Comparator;
+import java.util.stream.Collectors;
 import java.util.List;
 
 /**
@@ -27,16 +28,17 @@ public final class HamsterClub implements Club {
 
 	@Override
 	public List<String> getNameOfMembers() {
-		// TODO: implement
-		return members.stream().map(ClubMember::getName).sorted().toList();
-	//	return null;
+		return members.stream()
+				.map(ClubMember::getName)
+				.sorted()
+				.collect(Collectors.toList());
 	}
 
 	@Override
 	public double getTotalContributions() {
-		// TODO: implement
-		return members.stream().map(ClubMember::getContributions).mapToDouble(contribution -> Double.valueOf(contribution)).sum();
-		// return 0.0;
+		return members.stream()
+				.mapToDouble(ClubMember::getContributions)
+				.sum();
 	}
 
 	@Override
